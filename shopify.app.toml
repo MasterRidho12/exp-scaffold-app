@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "<YOUR_CLIENT_ID>"
-name = "<YOUR_APP_NAME>"
-application_url = "<YOUR_APP_URL>"
+client_id = "726467450702eaa5e91fa5f028b743a0"
+name = "ridho-qr-app"
+application_url = "https://example.com"
 embedded = true
 
 [build]

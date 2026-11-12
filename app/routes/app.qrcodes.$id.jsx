@@ -55,12 +55,7 @@ export async function action({ request, params }) {
   const errors = validateQRCode(data);
 
   if (errors) {
-    return new Response(JSON.stringify({ errors }), {
-      status: 422,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    return { errors };
   }
 
   const handle = params.id === "new" ? generateHandle() : params.id;

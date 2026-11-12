@@ -10,6 +10,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <s-checkbox label="Send order updates"></s-checkbox>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
