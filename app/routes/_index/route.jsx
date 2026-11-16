@@ -29,8 +29,8 @@ export default function App() {
           <a className="brand-mark" href="/" aria-label="QR Studio Beranda">
             <svg
               className="brand-mark__icon"
-              width="24"
-              height="24"
+              width="22"
+              height="22"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -51,8 +51,8 @@ export default function App() {
 
           <nav className="nav-links" aria-label="Navigasi Utama">
             <a className="nav-link" href="#how-to-use">Cara Pakai</a>
-            <a className="nav-link" href="#destinations">Tujuan Scan</a>
-            <a className="nav-link" href="#features">Fitur</a>
+            <a className="nav-link" href="#destinations">Rute Scan</a>
+            <a className="nav-link" href="#features">Spesifikasi</a>
             <a className="nav-link" href="#faq">FAQ</a>
             <a className="btn btn--secondary btn--compact" href="#shop-connect">
               Buka di Shopify
@@ -66,22 +66,20 @@ export default function App() {
         <section className="hero" id="shop-connect">
           <div className="container hero-grid">
             <div className="hero__copy">
-              <span className="badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z" />
-                </svg>
-                Shopify Native App
-              </span>
-              <h1>Label QR Code Interaktif Terhubung ke Shopify Checkout.</h1>
+              <div className="tech-badge">
+                <span className="tech-badge__dot"></span>
+                Shopify Metaobject Engine
+              </div>
+              <h1>Label QR Code Presisi Terhubung ke Shopify Checkout.</h1>
               <p className="lead">
-                Buat QR code instan untuk produk atau keranjang belanja Shopify. Pembeli dapat memindai dari ponsel untuk langsung checkout tanpa perlu login.
+                Cetak label stiker barcode dan QR dinamis untuk produk fisik Anda. Hasil scan langsung melompat ke checkout dengan varian otomatis terpasang—bebas login untuk pelanggan.
               </p>
 
               {showForm && (
                 <Form method="post" action="/auth/login" className="connect-form">
                   <div className="field-group">
                     <label className="field-label" htmlFor="shop-domain">
-                      Domain Toko Shopify
+                      Shopify Store Domain
                     </label>
                     <div className="field-row">
                       <input
@@ -89,7 +87,7 @@ export default function App() {
                         className="field-input"
                         type="text"
                         name="shop"
-                        placeholder="toko-anda.myshopify.com"
+                        placeholder="contoh-toko.myshopify.com"
                         autoComplete="url"
                         required
                       />
@@ -98,17 +96,17 @@ export default function App() {
                       </button>
                     </div>
                   </div>
-                  <p className="field-help">
-                    Masukkan domain .myshopify.com Anda untuk membuka dashboard QR di Shopify Admin.
-                  </p>
+                  <span className="field-help">
+                    Masukkan domain .myshopify.com toko Anda untuk login ke dashboard Admin.
+                  </span>
                 </Form>
               )}
             </div>
 
-            {/* INTERACTIVE STICKER TRAY */}
+            {/* REALISTIC PHYSICAL STICKER TRAY */}
             <div className="sticker-tray">
               <div className="sticker-tray__header">
-                <span className="sticker-tray__title">Contoh Output Stiker QR</span>
+                <span className="sticker-tray__title">Preview Label Cetak</span>
                 <div className="mode-pills" role="tablist" aria-label="Mode Tujuan">
                   <button
                     type="button"
@@ -117,7 +115,7 @@ export default function App() {
                     className={`mode-pill ${activeMode === "cart" ? "is-active" : ""}`}
                     onClick={() => setActiveMode("cart")}
                   >
-                    Cart checkout
+                    Direct Cart Checkout
                   </button>
                   <button
                     type="button"
@@ -126,332 +124,337 @@ export default function App() {
                     className={`mode-pill ${activeMode === "product" ? "is-active" : ""}`}
                     onClick={() => setActiveMode("product")}
                   >
-                    Product page
+                    Product Page
                   </button>
                 </div>
               </div>
 
-              <div className="sticker-sheet">
-                <div className="sticker-qr-wrap">
-                  {/* Clean SVG QR code vector */}
-                  <svg viewBox="0 0 250 250" className="sticker-qr-img" aria-label="QR Code Preview">
-                    <rect width="250" height="250" fill="#ffffff" />
-                    {/* Top-Left Outer Finder */}
-                    <rect x="20" y="20" width="60" height="60" rx="10" fill="none" stroke="#0a563a" strokeWidth="12" />
-                    <rect x="36" y="36" width="28" height="28" rx="4" fill="#0a563a" />
-                    {/* Top-Right Outer Finder */}
-                    <rect x="170" y="20" width="60" height="60" rx="10" fill="none" stroke="#0a563a" strokeWidth="12" />
-                    <rect x="186" y="36" width="28" height="28" rx="4" fill="#0a563a" />
-                    {/* Bottom-Left Outer Finder */}
-                    <rect x="20" y="170" width="60" height="60" rx="10" fill="none" stroke="#0a563a" strokeWidth="12" />
-                    <rect x="36" y="186" width="28" height="28" rx="4" fill="#0a563a" />
-                    {/* Pattern Matrix Dots */}
-                    <rect x="100" y="25" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="125" y="25" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="50" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="145" y="50" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="75" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="125" y="75" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="25" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="50" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="75" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="100" width="16" height="16" rx="3" fill="#0a563a" />
-                    <rect x="125" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="150" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="175" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="200" y="100" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="25" y="125" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="75" y="125" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="125" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="145" y="125" width="16" height="16" rx="3" fill="#0a563a" />
-                    <rect x="175" y="125" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="205" y="125" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="50" y="145" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="145" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="125" y="145" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="175" y="145" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="175" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="125" y="175" width="16" height="16" rx="3" fill="#0a563a" />
-                    <rect x="150" y="175" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="175" y="175" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="100" y="200" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="145" y="200" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="175" y="200" width="16" height="16" rx="3" fill="#111a15" />
-                    <rect x="205" y="200" width="16" height="16" rx="3" fill="#0a563a" />
-                  </svg>
-                </div>
+              <div className="sticker-canvas">
+                <div className="physical-sticker">
+                  {/* Corner crop marks */}
+                  <div className="sticker-crop-mark crop-tl"></div>
+                  <div className="sticker-crop-mark crop-tr"></div>
+                  <div className="sticker-crop-mark crop-bl"></div>
+                  <div className="sticker-crop-mark crop-br"></div>
 
-                <div className="sticker-meta">
-                  <span className="sticker-badge">
-                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#0f7a53", display: "inline-block" }}></span>
-                    {activeMode === "cart" ? "Direct Checkout" : "Storefront Link"}
-                  </span>
-                  <div className="sticker-name">
-                    {activeMode === "cart" ? "Gift Card Spesial (Rp 100.000)" : "Gift Card Spesial"}
+                  <div className="sticker-content">
+                    <div className="sticker-qr-box">
+                      <svg viewBox="0 0 250 250" style={{ width: "100%", height: "100%" }} aria-label="QR Code Matrix">
+                        <rect width="250" height="250" fill="#ffffff" />
+                        {/* Finder Top-Left */}
+                        <rect x="18" y="18" width="64" height="64" rx="8" fill="none" stroke="#0f172a" strokeWidth="12" />
+                        <rect x="34" y="34" width="32" height="32" rx="4" fill="#0f172a" />
+                        {/* Finder Top-Right */}
+                        <rect x="168" y="18" width="64" height="64" rx="8" fill="none" stroke="#0f172a" strokeWidth="12" />
+                        <rect x="184" y="34" width="32" height="32" rx="4" fill="#0f172a" />
+                        {/* Finder Bottom-Left */}
+                        <rect x="18" y="168" width="64" height="64" rx="8" fill="none" stroke="#0f172a" strokeWidth="12" />
+                        <rect x="34" y="184" width="32" height="32" rx="4" fill="#0f172a" />
+                        {/* Data Pattern Cells */}
+                        <rect x="98" y="24" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="122" y="24" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="48" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="142" y="48" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="72" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="122" y="72" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="24" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="48" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="72" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="98" width="16" height="16" rx="2" fill="#2563eb" />
+                        <rect x="122" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="146" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="170" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="202" y="98" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="24" y="122" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="72" y="122" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="122" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="142" y="122" width="16" height="16" rx="2" fill="#2563eb" />
+                        <rect x="170" y="122" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="202" y="122" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="48" y="144" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="144" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="122" y="144" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="170" y="144" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="172" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="122" y="172" width="16" height="16" rx="2" fill="#2563eb" />
+                        <rect x="146" y="172" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="170" y="172" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="98" y="198" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="142" y="198" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="170" y="198" width="16" height="16" rx="2" fill="#0f172a" />
+                        <rect x="202" y="198" width="16" height="16" rx="2" fill="#2563eb" />
+                      </svg>
+                    </div>
+
+                    <div className="sticker-meta">
+                      <span className="sticker-tag">
+                        {activeMode === "cart" ? "Cart Auto-Add" : "Storefront Page"}
+                      </span>
+                      <div className="sticker-title">
+                        {activeMode === "cart" ? "Merino Travel Pack (Black / M)" : "Merino Travel Pack"}
+                      </div>
+                      <div className="sticker-url-pill">
+                        {activeMode === "cart"
+                          ? "shop.com/cart/4492018812:1?discount=PACK15"
+                          : "shop.com/products/merino-travel-pack"}
+                      </div>
+                    </div>
                   </div>
-                  <div className="sticker-route mono">
-                    {activeMode === "cart"
-                      ? "toko-anda.myshopify.com/cart/4492018812:1"
-                      : "toko-anda.myshopify.com/products/gift-card"}
-                  </div>
-                  <div className="sticker-stub">
-                    <span className="mono" style={{ fontSize: "0.8rem", color: "#4d6356" }}>
-                      {activeMode === "cart" ? "scans: 48 | auto-cart" : "scans: 120 | product"}
-                    </span>
-                    <span className="seal-stamp seal-stamp--tilted">
-                      {activeMode === "cart" ? "Tersambung Kasir" : "Katalog Toko"}
+
+                  <div className="sticker-perforated-stub">
+                    <span className="sticker-sku">SKU: MTP-092-BLK // $app:qr_code</span>
+                    <span className="stamp-badge">
+                      {activeMode === "cart" ? "CODE PACK15" : "IN-STOCK"}
                     </span>
                   </div>
                 </div>
               </div>
 
               <div className="sticker-tray__footer">
-                <span>
-                  Mode: <strong>{activeMode === "cart" ? "Direct Cart Checkout" : "Storefront Product Page"}</strong>
-                </span>
-                <span>Format: PNG HD, Batch Export, Print Label</span>
+                <span>RUTE: {activeMode === "cart" ? "DIRECT CART CHECKOUT" : "PRODUCT CATALOG PAGE"}</span>
+                <span>RESOLUSI: 1024×1024 PNG • PRINT READY</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION: CARA MEMAKAI APPS (PANDUAN LENGKAP) */}
-        <section className="section-how-to-use" id="how-to-use">
+        {/* WORKFLOW PIPELINE SECTION ("CARA PAKAI") */}
+        <section className="section-pipeline" id="how-to-use">
           <div className="container">
-            <div className="section-head-center">
-              <span className="badge">Panduan Praktis</span>
-              <h2>Cara Menggunakan Aplikasi QR Code</h2>
+            <div className="section-head">
+              <div className="tech-badge">
+                <span className="tech-badge__dot"></span>
+                Alur Kerja Merchant
+              </div>
+              <h2>Cara Menggunakan Aplikasi</h2>
               <p className="lead">
-                Ikuti 6 langkah mudah berikut untuk mulai membuat, mencetak, dan melacak label QR code untuk produk toko Shopify Anda.
+                Panduan praktis langkah demi langkah dari pengaturan toko hingga pemindaian label stiker di kasir.
               </p>
             </div>
 
-            <div className="steps-grid">
+            <div className="pipeline-grid">
               {/* Step 1 */}
-              <div className="step-card">
-                <div className="step-header">
-                  <span className="step-number">Langkah 01</span>
-                  <div className="step-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                      <path d="M9 3v18"></path>
-                    </svg>
-                  </div>
+              <div className="pipeline-card">
+                <div className="card-top">
+                  <span className="card-step-id">01 // AUTENTIKASI</span>
+                  <span className="card-code-pill">OAuth 2.0</span>
                 </div>
-                <h3>Buka Aplikasi di Shopify Admin</h3>
+                <h3>Buka Aplikasi di Admin</h3>
                 <p>
-                  Masukkan domain toko Anda pada formulir login di atas, atau buka aplikasi langsung melalui menu <strong>Apps</strong> di halaman Shopify Admin toko Anda.
+                  Masukkan domain toko Anda pada form di atas atau buka langsung lewat menu <strong>Apps</strong> di Shopify Admin toko Anda.
                 </p>
+                <div className="card-code-block">
+                  admin.shopify.com/store/{`{toko}`}/apps
+                </div>
               </div>
 
               {/* Step 2 */}
-              <div className="step-card">
-                <div className="step-header">
-                  <span className="step-number">Langkah 02</span>
-                  <div className="step-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 5v14M5 12h14"></path>
-                    </svg>
-                  </div>
+              <div className="pipeline-card">
+                <div className="card-top">
+                  <span className="card-step-id">02 // INISIALISASI</span>
+                  <span className="card-code-pill">New Record</span>
                 </div>
                 <h3>Buat QR Code Baru</h3>
                 <p>
-                  Pada dashboard aplikasi, klik tombol <strong>"Create QR code"</strong>. Masukkan judul QR code yang deskriptif untuk memudahkan pencarian di kemudian hari.
+                  Klik tombol <strong>"Create QR code"</strong> pada dashboard. Masukkan judul label yang spesifik untuk memudahkan manajemen stok.
                 </p>
+                <div className="card-code-block">
+                  Title: "Display Kasir - Gift Card 100K"
+                </div>
               </div>
 
               {/* Step 3 */}
-              <div className="step-card">
-                <div className="step-header">
-                  <span className="step-number">Langkah 03</span>
-                  <div className="step-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-                      <path d="M3 6h18"></path>
-                      <path d="M16 10a4 4 0 0 1-8 0"></path>
-                    </svg>
-                  </div>
+              <div className="pipeline-card">
+                <div className="card-top">
+                  <span className="card-step-id">03 // SELEKSI KATALOG</span>
+                  <span className="card-code-pill">ResourcePicker</span>
                 </div>
-                <h3>Pilih Produk & Varian</h3>
+                <h3>Pilih Produk &amp; Varian</h3>
                 <p>
-                  Klik tombol <strong>"Select product"</strong> untuk membuka pemilih produk katalog Shopify Anda. Tentukan varian spesifik yang ingin dihubungkan ke QR code ini.
+                  Pilih produk dari katalog Shopify Store Anda. Tentukan varian target spesifik yang ingin dihubungkan ke kode QR.
                 </p>
+                <div className="card-code-block">
+                  Variant ID: gid://shopify/ProductVariant/...
+                </div>
               </div>
 
               {/* Step 4 */}
-              <div className="step-card">
-                <div className="step-header">
-                  <span className="step-number">Langkah 04</span>
-                  <div className="step-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <polyline points="13 17 18 12 13 7"></polyline>
-                      <polyline points="6 17 11 12 6 7"></polyline>
-                    </svg>
-                  </div>
+              <div className="pipeline-card">
+                <div className="card-top">
+                  <span className="card-step-id">04 // RUTE TUJUAN</span>
+                  <span className="card-code-pill">302 Redirect</span>
                 </div>
-                <h3>Tentukan Tujuan Scan (Destination)</h3>
+                <h3>Tentukan Mode Scan</h3>
                 <p>
-                  Pilih <strong>"Product page"</strong> untuk mengarahkan pembeli membaca detail produk, atau <strong>"Checkout with product in cart"</strong> untuk langsung memasukkan barang ke keranjang pembayaran.
+                  Pilih <strong>Cart Checkout</strong> (otomatis masuk keranjang &amp; kasir) atau <strong>Product Page</strong> (halaman detail katalog website).
                 </p>
+                <div className="card-code-block">
+                  Destination: "cart" | "product"
+                </div>
               </div>
 
               {/* Step 5 */}
-              <div className="step-card">
-                <div className="step-header">
-                  <span className="step-number">Langkah 05</span>
-                  <div className="step-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                      <polyline points="7 10 12 15 17 10"></polyline>
-                      <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                  </div>
+              <div className="pipeline-card">
+                <div className="card-top">
+                  <span className="card-step-id">05 // PRODUKSI FISIK</span>
+                  <span className="card-code-pill">PNG High-Res</span>
                 </div>
-                <h3>Unduh & Cetak Label QR</h3>
+                <h3>Unduh &amp; Cetak Label</h3>
                 <p>
-                  Unduh gambar QR code berkualitas tinggi (PNG). Cetak stiker untuk ditempelkan pada kemasan produk fisik, kartu ucapan, hangtag pakaian, atau standing banner kasir.
+                  Download file PNG beresolusi tajam. Cetak pada stiker kemasan produk, tag pakaian, selebaran promo, atau akrilik meja kasir fisik.
                 </p>
+                <div className="card-code-block">
+                  Format: 1024x1024px lossless PNG
+                </div>
               </div>
 
               {/* Step 6 */}
-              <div className="step-card">
-                <div className="step-header">
-                  <span className="step-number">Langkah 06</span>
-                  <div className="step-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <line x1="18" y1="20" x2="18" y2="10"></line>
-                      <line x1="12" y1="20" x2="12" y2="4"></line>
-                      <line x1="6" y1="20" x2="6" y2="14"></line>
-                    </svg>
-                  </div>
+              <div className="pipeline-card">
+                <div className="card-top">
+                  <span className="card-step-id">06 // PELACAKAN</span>
+                  <span className="card-code-pill">Real-time DB</span>
                 </div>
                 <h3>Pantau Statistik Scan</h3>
                 <p>
-                  Setiap kali pelanggan memindai QR code dengan kamera HP (tanpa perlu login), counter scan bertambah secara otomatis. Pantau total scan langsung di dashboard aplikasi.
+                  Ketika pembeli memindai QR lewat kamera ponsel (tanpa login), server secara otomatis menambah counter scan di metaobject Shopify Anda.
                 </p>
+                <div className="card-code-block">
+                  scans: scans + 1 (Metaobject sync)
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION: DUA MODE SCAN */}
-        <section className="section-destinations" id="destinations">
+        {/* SECTION SPECS & DESTINATIONS */}
+        <section className="section-specs" id="destinations">
           <div className="container">
             <div className="section-head-split">
               <div>
-                <span className="badge">Fleksibilitas Penuh</span>
-                <h2>Dua Rute Scan, Satu Kode Cetak.</h2>
+                <div className="tech-badge">
+                  <span className="tech-badge__dot"></span>
+                  Spesifikasi Teknis
+                </div>
+                <h2>Dua Rute Scan, Satu Label Cetak.</h2>
               </div>
               <p className="lead">
-                Pilih apakah label yang dipindai mengarahkan pembeli ke halaman detail katalog atau melompat langsung ke halaman checkout keranjang belanja.
+                Fleksibilitas penuh untuk mengubah tujuan pemindaian kapan saja tanpa perlu mencetak ulang fisik stiker yang sudah tertempel di produk.
               </p>
             </div>
 
-            <div className="switcher-panel">
-              <dl className="spec-list">
-                <div className="spec-row">
+            <div className="spec-container">
+              <dl className="spec-table">
+                <div className="spec-entry">
                   <dt>Mode Scan</dt>
                   <dd>Direct Cart Checkout / Product Page</dd>
                 </div>
-                <div className="spec-row">
-                  <dt>URL Resolved</dt>
-                  <dd className="mono">toko-anda.myshopify.com/cart/{`{variant_id}`}:1</dd>
+                <div className="spec-entry">
+                  <dt>Resolved Path</dt>
+                  <dd className="mono">{`{shop}.myshopify.com/cart/{variant_id}:1`}</dd>
                 </div>
-                <div className="spec-row">
-                  <dt>Penyimpanan</dt>
+                <div className="spec-entry">
+                  <dt>Storage Type</dt>
                   <dd className="mono">$app:qr_code (Shopify Metaobject)</dd>
                 </div>
-                <div className="spec-row">
-                  <dt>Akses Scanner</dt>
-                  <dd>Publik &amp; Instan (Tanpa Login Vercel / Shopify)</dd>
+                <div className="spec-entry">
+                  <dt>Akses Pemindai</dt>
+                  <dd>Publik Instan (Tanpa login Vercel atau akun toko)</dd>
+                </div>
+                <div className="spec-entry">
+                  <dt>Lifecycle Scan</dt>
+                  <dd className="mono">GET /qrcodes/:id/scan → 302 Found</dd>
                 </div>
               </dl>
 
-              <div className="switcher-info">
-                <h3>Kenapa Mode Cart Sangat Populer?</h3>
+              <div className="spec-callout">
+                <h3>Keunggulan Rute Cart Checkout</h3>
                 <p>
-                  Mode Cart memotong rintangan berbelanja: pembeli di toko fisik atau event offline cukup mengarahkan kamera ponsel ke label stiker, dan produk incaran otomatis berada di keranjang siap dibayar dalam sekejap.
+                  Mengeliminasi gesekan proses belanja online. Konsumen di toko fisik atau pameran cukup mengarahkan kamera HP ke stiker, dan produk yang diinginkan langsung masuk ke keranjang pembayaran Shopify dalam 1 detik.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION: FITUR UNGGULAN (DARK BAND) */}
-        <section className="band--ink" id="features">
+        {/* SECTION FEATURES */}
+        <section className="section-features" id="features">
           <div className="container">
-            <div className="band-head">
-              <h2>Cetak Label Mandiri &amp; Pantau Performa.</h2>
-              <p className="lead">
-                Setiap kode QR selalu tersinkronisasi dengan katalog toko Shopify Anda tanpa memerlukan software desain tambahan.
-              </p>
+            <div className="section-head">
+              <div className="tech-badge">
+                <span className="tech-badge__dot"></span>
+                Arsitektur Bawaan
+              </div>
+              <h2>Keamanan &amp; Performa Kelas Industri</h2>
             </div>
 
-            <div className="exports-grid">
-              <div className="export-item">
-                <h3>Kartu QR Publik Berbagi</h3>
-                <p className="export-item__desc">
-                  Tautan halaman publik yang bersih untuk mengunduh gambar PNG atau melihat pratinjau produk bagi tim desain.
+            <div className="features-grid">
+              <div className="feature-box">
+                <h3>Kartu Berbagi Publik</h3>
+                <p>
+                  Setiap QR code memiliki URL kartu publik bersih (<span className="mono">/qrcodes/:id</span>) untuk pratinjau instan dan download aset PNG resolusi tinggi.
                 </p>
-                <span className="export-item__meta">Rute: /qrcodes/:id</span>
+                <span className="feature-tag">ENDPOINT: /qrcodes/:id</span>
               </div>
 
-              <div className="export-item">
-                <h3>Shopify Native Metaobjects</h3>
-                <p className="export-item__desc">
-                  Data QR tersimpan aman langsung di dalam ekosistem Shopify Store Anda dengan struktur metaobject resmi.
+              <div className="feature-box">
+                <h3>Native Metaobjects</h3>
+                <p>
+                  Data disimpan langsung di dalam cloud Shopify Store Anda menggunakan Metaobjects resmi (<span className="mono">$app:qr_code</span>), bebas ketergantungan database pihak ketiga yang lambat.
                 </p>
-                <span className="export-item__meta">Tipe: $app:qr_code</span>
+                <span className="feature-tag">DEFINITION: $app:qr_code</span>
               </div>
 
-              <div className="export-item">
-                <h3>Real-time Scan Analytics</h3>
-                <p className="export-item__desc">
-                  Setiap pemindaian kamera HP secara otomatis menambah jumlah scan counter sehingga efektivitas promosi Anda terukur.
+              <div className="feature-box">
+                <h3>Auto-Increment Counter</h3>
+                <p>
+                  Setiap scan kamera dihitung secara atomik saat HTTP redirect berlangsung, memberikan metrik analitik pemindaian offline yang presisi.
                 </p>
-                <span className="export-item__meta">Tracking: Auto Increment</span>
+                <span className="feature-tag">COUNTER: Atomic Update</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION: FAQ */}
+        {/* SECTION FAQ */}
         <section className="section-faq" id="faq">
           <div className="container faq-layout">
             <div>
-              <span className="badge">FAQ</span>
+              <div className="tech-badge">
+                <span className="tech-badge__dot"></span>
+                Dokumentasi
+              </div>
               <h2>Pertanyaan Umum</h2>
               <p className="lead" style={{ marginTop: "12px" }}>
-                Jawaban seputar cara kerja QR code, privasi pembeli, dan integrasi Shopify.
+                Jawaban ringkas seputar privasi pelanggan, scan tanpa login, dan sinkronisasi produk.
               </p>
             </div>
 
             <div className="faq-list">
-              <div className="faq-row">
-                <h3>Apakah pembeli yang memindai QR code harus login?</h3>
+              <div className="faq-item">
+                <h3>Apakah pembeli yang scan butuh login?</h3>
                 <p>
-                  Tidak. Scan berjalan 100% publik dan instan. Pembeli cukup membuka kamera ponsel pintar mereka, mengarahkan ke QR code, dan langsung diarahkan ke halaman produk atau keranjang belanja Shopify Anda.
+                  Sama sekali tidak. URL scan bersifat publik murni. Kamera ponsel iPhone maupun Android akan langsung membuka browser dan mengarahkan pembeli ke produk atau checkout toko Anda tanpa rintangan login.
                 </p>
               </div>
 
-              <div className="faq-row">
+              <div className="faq-item">
                 <h3>Di mana data QR code disimpan?</h3>
                 <p>
-                  Semua data QR code disimpan langsung di dalam toko Shopify Anda menggunakan arsitektur Shopify Metaobjects resmi (<span className="mono">$app:qr_code</span>), aman dan terenkripsi.
+                  Semua data QR tersimpan aman langsung di dalam metaobjects toko Shopify Anda, terhubung dengan sesi terenkripsi PostgreSQL di backend server.
                 </p>
               </div>
 
-              <div className="faq-row">
-                <h3>Bagaimana scan dihitung?</h3>
+              <div className="faq-item">
+                <h3>Bisakah mengubah rute setelah QR dicetak?</h3>
                 <p>
-                  Setiap kali URL scan dipanggil oleh browser ponsel pembeli, server secara otomatis mencatat dan menambah angka penghitung scan sebelum mengarahkan ke link checkout atau produk.
+                  Bisa. Barcode yang tercetak mengarah ke rute pengalih dinamis kami. Anda bebas mengganti varian atau mengubah rute dari Product ke Cart kapan saja di Shopify Admin tanpa perlu mencetak ulang fisik stiker.
                 </p>
               </div>
 
-              <div className="faq-row">
-                <h3>Bisakah saya mengubah tujuan setelah stiker dicetak?</h3>
+              <div className="faq-item">
+                <h3>Bagaimana penghitungan scan bekerja?</h3>
                 <p>
-                  Bisa. QR code bersifat dinamis. Anda dapat mengubah tujuan (dari Product Page ke Cart Checkout) atau mengganti varian kapan saja dari dashboard tanpa perlu mencetak ulang fisik kode QR.
+                  Saat scanner mengakses URL scan, sistem secara otomatis mengeksekusi mutasi counter `scans` sebesar +1 di Shopify Metaobject sebelum mengirimkan respons HTTP 302 ke halaman checkout.
                 </p>
               </div>
             </div>
@@ -459,14 +462,14 @@ export default function App() {
         </section>
 
         {/* CTA BAND */}
-        <section className="close-band">
-          <div className="container close-band__row">
-            <div className="close-band__copy">
-              <h2>Mulai Buat Label QR di Shopify Admin.</h2>
-              <p>Tingkatkan penjualan toko offline &amp; online Anda dengan QR code dinamis.</p>
+        <section className="cta-band">
+          <div className="container cta-row">
+            <div className="cta-copy">
+              <h2>Mulai Kelola Label QR di Shopify Admin.</h2>
+              <p>Sambungkan katalog toko fisik dan online Anda dengan pengalaman checkout instan.</p>
             </div>
             <a href="#shop-connect" className="btn btn--primary">
-              Hubungkan Toko Sekarang
+              Hubungkan Toko
             </a>
           </div>
         </section>
@@ -480,8 +483,8 @@ export default function App() {
               <a className="brand-mark" href="/">
                 <svg
                   className="brand-mark__icon"
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -499,14 +502,14 @@ export default function App() {
                 <span>QR Studio</span>
               </a>
               <p className="footer-note">
-                Generator QR Code Terintegrasi Shopify Admin &amp; Checkout.
+                Shopify Metaobject QR Engine. All rights reserved.
               </p>
             </div>
 
             <nav className="footer-links" aria-label="Footer Navigasi">
               <a className="nav-link" href="#how-to-use">Cara Pakai</a>
-              <a className="nav-link" href="#destinations">Tujuan Scan</a>
-              <a className="nav-link" href="#features">Fitur</a>
+              <a className="nav-link" href="#destinations">Rute Scan</a>
+              <a className="nav-link" href="#features">Spesifikasi</a>
               <a className="nav-link" href="#faq">FAQ</a>
               <a className="nav-link" href="#shop-connect">Store Login</a>
             </nav>
@@ -516,4 +519,5 @@ export default function App() {
     </div>
   );
 }
+
 
