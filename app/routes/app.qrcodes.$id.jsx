@@ -4,6 +4,7 @@ import {
   useLoaderData,
   useSubmit,
   useParams,
+  useRouteError,
 } from "react-router";
 import { authenticate } from "../shopify.server";
 import { boundary } from "@shopify/shopify-app-react-router/server";
@@ -375,6 +376,27 @@ export default function QRCodeForm() {
         {/* [END polaris] */}
       </form>
     </>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  return (
+    <s-page heading="Create QR code">
+      <s-link href="/app" slot="breadcrumb-actions">
+        QR Codes
+      </s-link>
+      <s-section heading="Notice">
+        <s-paragraph>
+          {error?.message || error?.statusText || "An unexpected error occurred."}
+        </s-paragraph>
+        <s-stack direction="inline" gap="base">
+          <s-button href="/app" variant="primary">
+            Back to QR Codes
+          </s-button>
+        </s-stack>
+      </s-section>
+    </s-page>
   );
 }
 

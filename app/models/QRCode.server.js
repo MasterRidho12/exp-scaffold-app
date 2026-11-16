@@ -182,10 +182,19 @@ export async function saveQRCode(handle, data, graphql) {
     },
   );
 
-  const { data: responseData } = await response.json();
-  const { metaobjectUpsert } = responseData;
+  const responseJson = await response.json();
 
-  if (metaobjectUpsert.userErrors.length) {
+  if (responseJson.errors?.length) {
+    throw new Error(responseJson.errors.map((e) => e.message).join(", "));
+  }
+
+  const metaobjectUpsert = responseJson.data?.metaobjectUpsert;
+
+  if (!metaobjectUpsert) {
+    throw new Error("Failed to save QR code");
+  }
+
+  if (metaobjectUpsert.userErrors?.length) {
     throw new Error(metaobjectUpsert.userErrors[0].message);
   }
 

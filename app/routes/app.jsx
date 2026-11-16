@@ -22,7 +22,18 @@ export default function App() {
 
 // Shopify needs Remix to catch some thrown responses, so that their headers are included in the response.
 export function ErrorBoundary() {
-  return boundary.error(useRouteError());
+  const error = useRouteError();
+  try {
+    return boundary.error(error);
+  } catch (e) {
+    return (
+      <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
+        <h2 style={{ color: "#d82c0d" }}>Error</h2>
+        <p style={{ color: "#333" }}>{error?.message || error?.statusText || "An unexpected error occurred."}</p>
+        <a href="/app" style={{ color: "#008060", textDecoration: "underline", fontWeight: "bold" }}>← Back to QR Codes</a>
+      </div>
+    );
+  }
 }
 
 export const headers = (headersArgs) => {
