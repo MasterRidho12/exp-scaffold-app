@@ -136,10 +136,7 @@ async function transformMetaobject(metaobject, shop) {
 // [START get-qrcode-image]
 export async function getQRCodeImage(handle, shop) {
   const baseUrl =
-    process.env.SHOPIFY_APP_URL ||
-    (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://exp-scaffold-app-co9s.vercel.app");
+    process.env.SHOPIFY_APP_URL || "https://exp-scaffold-app-co9s.vercel.app";
   const url = new URL(
     `/qrcodes/${handle}/scan`,
     baseUrl,
