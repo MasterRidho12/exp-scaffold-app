@@ -64,9 +64,12 @@ export async function action({ request, params }) {
 
   const handle = params.id === "new" ? generateHandle() : params.id;
 
-  const metaobject = await saveQRCode(handle, data, admin.graphql);
-
-  return redirect(`/app/qrcodes/${metaobject.handle}`);
+  try {
+    const metaobject = await saveQRCode(handle, data, admin.graphql);
+    return redirect(`/app/qrcodes/${metaobject.handle}`);
+  } catch (error) {
+    return { errors: { form: error.message || "Failed to save QR code" } };
+  }
 }
 // [END action]
 
@@ -193,6 +196,13 @@ export default function QRCodeForm() {
           </s-link>
           {initialFormState.handle &&
             <s-button slot="secondary-actions" onClick={handleDelete}>Delete</s-button>}
+          {errors.form && (
+            <s-section>
+              <div style={{ padding: "12px 16px", backgroundColor: "#fff4f4", border: "1px solid #fecaca", borderRadius: "8px", color: "#b91c1c", fontSize: "14px" }}>
+                <strong>Error: </strong> {errors.form}
+              </div>
+            </s-section>
+          )}
           <s-section heading="QR Code information">
             <s-stack gap="base">
               {/* [START title] */}
@@ -384,6 +394,18 @@ export default function QRCodeForm() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+
+  useEffect(() => {
+    try {
+      const saveBar = document.getElementById("qr-code-form");
+      if (saveBar && typeof saveBar.hide === "function") {
+        saveBar.hide();
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, []);
+
   return (
     <s-page heading="Create QR code">
       <s-link href="/app" slot="breadcrumb-actions">

@@ -2,7 +2,7 @@ import qrcode from "qrcode";
 import invariant from "tiny-invariant";
 
 // [START get-qrcode]
-const METAOBJECT_TYPE = "$app:qrcode";
+const METAOBJECT_TYPE = "$app:qr_code";
 
 export async function getQRCode(handle, graphql, shop) {
   const response = await graphql(
