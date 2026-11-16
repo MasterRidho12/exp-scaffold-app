@@ -32,6 +32,9 @@ export async function loader({ request, params }) {
   }
 
   const qrCode = await getQRCode(params.id, admin.graphql, session.shop);
+  if (!qrCode) {
+    throw new Response("QR code not found", { status: 404 });
+  }
   return { ...qrCode, shop: session.shop };
   // [END data]
 }

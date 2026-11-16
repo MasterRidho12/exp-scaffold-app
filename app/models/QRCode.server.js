@@ -135,9 +135,14 @@ async function transformMetaobject(metaobject, shop) {
 
 // [START get-qrcode-image]
 export async function getQRCodeImage(handle, shop) {
+  const baseUrl =
+    process.env.SHOPIFY_APP_URL ||
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://exp-scaffold-app-co9s.vercel.app");
   const url = new URL(
     `/qrcodes/${handle}/scan`,
-    process.env.SHOPIFY_APP_URL,
+    baseUrl,
   );
   url.searchParams.set("shop", shop);
   return qrcode.toDataURL(url.href);
@@ -146,13 +151,20 @@ export async function getQRCodeImage(handle, shop) {
 
 // [START get-destination]
 export function getDestinationUrl(qrCode, shop) {
+  if (!shop) return "";
   if (qrCode.destination === "product") {
-    return `https://${shop}/products/${qrCode.productHandle}?variant=${qrCode.productVariantLegacyId}`;
+    const handle = qrCode.productHandle || "";
+    const variantQuery = qrCode.productVariantLegacyId
+      ? `?variant=${qrCode.productVariantLegacyId}`
+      : "";
+    return `https://${shop}/products/${handle}${variantQuery}`;
   }
 
-  invariant(qrCode.productVariantLegacyId, "Unrecognised product variant ID");
+  if (qrCode.productVariantLegacyId) {
+    return `https://${shop}/cart/${qrCode.productVariantLegacyId}:1`;
+  }
 
-  return `https://${shop}/cart/${qrCode.productVariantLegacyId}:1`;
+  return `https://${shop}`;
 }
 // [END get-destination]
 
