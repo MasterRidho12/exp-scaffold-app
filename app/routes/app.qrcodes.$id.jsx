@@ -393,36 +393,7 @@ export default function QRCodeForm() {
 }
 
 export function ErrorBoundary() {
-  const error = useRouteError();
-
-  useEffect(() => {
-    try {
-      const saveBar = document.getElementById("qr-code-form");
-      if (saveBar && typeof saveBar.hide === "function") {
-        saveBar.hide();
-      }
-    } catch (e) {
-      // ignore
-    }
-  }, []);
-
-  return (
-    <s-page heading="Create QR code">
-      <s-link href="/app" slot="breadcrumb-actions">
-        QR Codes
-      </s-link>
-      <s-section heading="Notice">
-        <s-paragraph>
-          {error?.message || error?.statusText || "An unexpected error occurred."}
-        </s-paragraph>
-        <s-stack direction="inline" gap="base">
-          <s-button href="/app" variant="primary">
-            Back to QR Codes
-          </s-button>
-        </s-stack>
-      </s-section>
-    </s-page>
-  );
+  return boundary.error(useRouteError());
 }
 
 export const headers = (headersArgs) => {

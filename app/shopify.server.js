@@ -15,11 +15,7 @@ const shopify = shopifyApp({
   apiSecretKey: process.env.SHOPIFY_API_SECRET || "",
   apiVersion: ApiVersion.January26,
   scopes: (process.env.SCOPES || "write_metaobject_definitions,write_metaobjects,write_products").split(","),
-  appUrl:
-    process.env.SHOPIFY_APP_URL ||
-    (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://exp-scaffold-app-co9s.vercel.app"),
+  appUrl: process.env.SHOPIFY_APP_URL || "https://exp-scaffold-app-co9s.vercel.app",
   authPathPrefix: "/auth",
   sessionStorage: new PrismaSessionStorage(prisma),
   distribution: AppDistribution.AppStore,
