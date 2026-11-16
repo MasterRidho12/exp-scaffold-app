@@ -15,5 +15,6 @@ export default {
     "127.0.0.1:*",
     "*.spin.dev",
     "*.vercel.app",
+    "exp-scaffold-app-co9s.vercel.app",
   ],
 };
